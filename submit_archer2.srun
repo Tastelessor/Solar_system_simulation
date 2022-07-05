@@ -1,0 +1,21 @@
+#!/bin/bash
+  
+# Slurm job options (job-name, compute nodes, job time)
+#SBATCH --job-name=PDP
+#SBATCH --time=0:20:0
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=4
+#SBATCH --cpus-per-task=1
+#SBATCH --account=d180-s2168291
+
+#SBATCH --partition=standard
+#SBATCH --qos=standard
+
+# Set the number of threads to 1
+#   This prevents any threaded system libraries from automatically 
+#   using threading.
+export OMP_NUM_THREADS=1
+
+# Launch the job
+srun --distribution=block:block --hint=nomultithread ./cosmology config_solar_with_moons.txt cosmology.out
+#srun ./cosmology config_solar_with_moons.txt cosmology.out

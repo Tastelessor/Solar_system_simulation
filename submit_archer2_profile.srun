@@ -1,0 +1,26 @@
+#!/bin/bash
+  
+# Slurm job options (job-name, compute nodes, job time)
+#SBATCH --job-name=PDP
+#SBATCH --time=0:10:0
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=8
+#SBATCH --cpus-per-task=1
+#SBATCH --account=d180-s2168291
+
+#SBATCH --partition=standard
+#SBATCH --qos=standard
+
+# Set the number of threads to 1
+#   This prevents any threaded system libraries from automatically 
+#   using threading.
+export OMP_NUM_THREADS=1
+
+# Profile configruations
+export EXTRAE_HOME=/work/z19/shared/extrae
+export EXTRAE_CONFIG_FILE=extrae.xml
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${EXTRAE_HOME}/lib
+
+# Launch the job
+srun --distribution=block:block --hint=nomultithread ./cosmology config_solar_with_moons.txt cosmology.out
+#srun ./cosmology config_solar_with_moons.txt cosmology.out

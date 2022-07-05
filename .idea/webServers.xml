@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="141e62c7-5a7e-44db-9740-d421f7b2bb1b" name="Archer2">
+        <fileTransfer rootFolder="/work/d180/d180/a2168291" accessType="SFTP" host="login.archer2.ac.uk" port="22" sshConfigId="5e7d7fa9-38f3-4bd0-9f66-d0f2af4068ae" sshConfig="a2168291@login.archer2.ac.uk:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
